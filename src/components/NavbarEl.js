@@ -4,7 +4,9 @@ import React, { useState } from 'react'
 
 import { useNavigate } from "react-router-dom";
 
-import { Container, Navbar, Button, Modal } from 'react-bootstrap'
+import { Container, Navbar, Button, Modal, FloatingLabel, Dropdown } from 'react-bootstrap'
+
+import FormAll from './Atoms/FormAll';
 
 import logo from '../images/logo.svg';
 import Form from 'react-bootstrap/Form';
@@ -20,7 +22,6 @@ function NavbarEl() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [showLog, setShowLog] = useState(false);
     const [showReg, setShowReg] = useState(false);
-    const [showU, setShowU] = useState(false);
 
     const handleCloseLog = () => setShowLog(false);
     const handleShowLog = () => {
@@ -32,15 +33,8 @@ function NavbarEl() {
         setIsLoggedIn(true)
     }
 
-    const handleShowU = () => {
-        setShowU(true)
-    }
-    const handleCloseU = () => {
-        setShowU(false)
-    }
     const handleLogout = () => {
         setIsLoggedIn(false)
-        handleCloseU()
     }
 
 
@@ -56,14 +50,12 @@ function NavbarEl() {
         navigate("/")
     }
     const handleNavigateToProfile = () => {
-        handleCloseU()
         navigate("/profile");
     };
     const handleNavigateToCart = () => {
         navigate("/cart")
     }
     const handleNavigateToAddProduct = () => {
-        handleCloseU()
         navigate("/add-product")
     }
 
@@ -81,8 +73,28 @@ function NavbarEl() {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
 
-                        {isLoggedIn ? <><span className='btn text-white me-2' onClick={handleNavigateToCart} ><img src={cart} alt="" /></span>
-                            <span className='btn' onClick={handleShowU}><img src={pp} alt="" /></span></> : <><Button className='btn btn-brown text-white me-2' onClick={handleShowReg} >Register</Button>
+                        {isLoggedIn ? <div>
+                            <Dropdown>
+                                <span><img src={cart} alt='' onClick={handleNavigateToCart} /></span>
+
+                                <Dropdown.Toggle variant="bg-yellow" id="dropdown-basic">
+                                    <img src={pp} alt='' />
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    <Dropdown.Item onClick={handleNavigateToProfile}><img src={user} alt='' className='me-2'></img>
+                                        Profile
+                                    </Dropdown.Item>
+                                    <Dropdown.Divider />
+                                    <Dropdown.Item onClick={handleNavigateToAddProduct}><img
+                                        src={prods}
+                                        alt='' className='me-2'
+                                    />Add Products</Dropdown.Item>
+                                    <Dropdown.Divider />
+                                    <Dropdown.Item href="#/action-3" onclick={handleLogout}><img src={logout} alt='' className='me-2' />Logout</Dropdown.Item>
+
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        </div> : <><Button className='btn btn-brown text-white me-2' onClick={handleShowReg} >Register</Button>
                             <Button className='btn btn-brown text-white' onClick={handleShowLog}>Login</Button></>}
 
 
@@ -95,54 +107,41 @@ function NavbarEl() {
                 <div>
                     <Modal show={showReg} onHide={handleCloseReg}>
                         <Modal.Header closeButton>
-                            <Modal.Title className='text-yellow'>Register</Modal.Title>
+                            <Modal.Title className='text-yellow fs-1' >Register</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                             <Form >
 
-                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
 
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="Full Name"
+                                <FormAll label="Full Name" type="text" placeholder="Full Name" className="mb-3" />
+                                <FormAll label="Email" type="email" placeholder="Email" className="mb-3" />
+                                <FormAll label="Password" type="password" placeholder="Password" className="mb-3" />
 
-                                    />
-                                </Form.Group>
-
-                                <Form.Group className="mb-3" controlId="formBasicEmail">
-                                    <Form.Control type="email" placeholder="Email" />
-                                </Form.Group>
-
-                                <Form.Group className="mb-3" controlId="formBasicPassword">
-                                    <Form.Control type="password" placeholder="Password" />
-                                </Form.Group>
 
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-
-                                    <Form.Select aria-label="Default select example">
-                                        <option selected disabled hidden>Gender</option>
-                                        <option value="m">Male</option>
-                                        <option value="f">Female</option>
-                                        <option value="o">Other</option>
-                                    </Form.Select>
-                                </Form.Group>
-                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-
-                                    <Form.Control
-                                        type="tel"
-                                        placeholder="Phone"
-
-                                    />
+                                    <FloatingLabel label='Gender'>
+                                        <Form.Select aria-label="Default select example">
+                                            <option selected disabled hidden>Select Gender</option>
+                                            <option value="m">Male</option>
+                                            <option value="f">Female</option>
+                                            <option value="o">Other</option>
+                                        </Form.Select>
+                                    </FloatingLabel>
                                 </Form.Group>
 
+                                <FormAll label="Phone" type="tel" placeholder="Phone" className="mb-3" />
+
+
+
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                    <FloatingLabel label='Login Type'>
+                                        <Form.Select aria-label="Default select example">
+                                            <option selected disabled hidden>Select Login Type</option>
+                                            <option value="u">As User</option>
+                                            <option value="a">As Admin</option>
 
-                                    <Form.Select aria-label="Default select example">
-                                        <option selected disabled hidden>Position</option>
-                                        <option value="u">As User</option>
-                                        <option value="a">As Admin</option>
-
-                                    </Form.Select>
+                                        </Form.Select>
+                                    </FloatingLabel>
                                 </Form.Group>
 
 
@@ -150,7 +149,7 @@ function NavbarEl() {
                         </Modal.Body>
                         <Modal.Footer>
 
-                            <Button className='btn-full btn-brown' variant="primary" onClick={handleCloseReg}>
+                            <Button className='btn-full btn-brown p-3 fs-5 fw-bolder' variant="primary" onClick={handleCloseReg}>
                                 Register
                             </Button>
                             <div className='btn-full justify-content-center d-flex'>
@@ -170,33 +169,18 @@ function NavbarEl() {
                 <div>
                     <Modal show={showLog} onHide={handleCloseLog}>
                         <Modal.Header closeButton>
-                            <Modal.Title className='text-yellow' >Login</Modal.Title>
+                            <Modal.Title className='text-yellow fs-1' >Login</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
                             <Form>
-                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                <FormAll label='Email' type='email' placeholder='Email' className='mb-3' />
+                                <FormAll label='Password' type='password' placeholder='Password' className='mb-3' />
 
-                                    <Form.Control
-                                        type="email"
-                                        placeholder="Email"
-                                        autoFocus
-                                    />
-                                </Form.Group>
-                            </Form>
-                            <Form>
-                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-
-                                    <Form.Control
-                                        type="password"
-                                        placeholder="Password"
-
-                                    />
-                                </Form.Group>
                             </Form>
                         </Modal.Body>
                         <Modal.Footer>
 
-                            <Button className='btn-full btn-brown' variant="primary" onClick={handleLogin}>
+                            <Button className='btn-full btn-brown p-3 fs-5 fw-bolder' variant="primary" onClick={handleLogin}>
                                 Login
                             </Button>
                             <div className='btn-full justify-content-center d-flex'>
@@ -212,26 +196,6 @@ function NavbarEl() {
                     </Modal>
                 </div>
 
-                <div>
-                    <Modal
-                        show={showU}
-                        onHide={handleCloseU}
-                        backdrop="static"
-                        keyboard={false}
-                    >
-                        <Modal.Header closeButton>
-                            <Modal.Title><img src={user} alt="" className='me-3' /><span onClick={handleNavigateToProfile}>Profile</span></Modal.Title>
-                        </Modal.Header>
-                        <Modal.Header>
-                            <Modal.Title><img src={prods} alt="" className='me-3' /><span onClick={handleNavigateToAddProduct}>Add Product</span></Modal.Title>
-                        </Modal.Header>
-
-                        <Modal.Body>
-                            <Modal.Title><img src={logout} alt="" className='me-3' /><span onClick={handleLogout}>Logout</span></Modal.Title>
-                        </Modal.Body>
-
-                    </Modal>
-                </div>
             </div>
         </>
 
