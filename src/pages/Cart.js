@@ -1,8 +1,9 @@
 import React from 'react'
+import CartsEl from '../components/CartsEl'
 
 function Cart() {
     return (
-        <div>Cart</div>
+        <CartsEl />
     )
 }
 

@@ -10,28 +10,30 @@ import { partners } from '../dataDummy/partners'
 function PartnersEl() {
     return (
         <>
-            <Container className='my-5'>
-                <h3>Popular Restaurant</h3>
-                <Row className=''>
+            <Container className='py-5 '>
+                <h3 className='text-center text-lg-start mb-3 ff-abhaya fw-bolder fs-1'>Popular Restaurants</h3>
+                <div className="">
 
-                    {partners.map((partner, index) => (
+                    <Row className=''>
 
-                        <Col key={index} className=" my-3 col-12 col-md-6 col-lg-3">
-                            <Row className='d-flex align-items-center'>
+                        {partners.map((partner, index) => (
 
+                            <Col key={index} className="col-12 col-md-4 col-lg-3">
 
-                                <Col className='text-start'>
+                                <Card style={{ width: '100%' }} className="my-3 p-3 border-0">
+                                    <Row className='d-flex align-items-center'>
+                                        <Col className=''>
+                                            <img src={partner.image} className='' alt='dfdcv' />
+                                        </Col><Col className=''>
+                                            <Card.Title className='ff-abhaya text-start fw-bolder'><h4>{partner.name}</h4></Card.Title>
+                                        </Col>
+                                    </Row>
 
-                                    <Card.Img variant="top" src={partner.image} style={{ width: '4rem' }} /></Col>
-                                <Col className='col-8'>
-                                    <Card.Body>
-                                        <Card.Title>{partner.name}</Card.Title>
-                                    </Card.Body>
-                                </Col>
-                            </Row>
-                        </Col>
-                    ))}
-                </Row>
+                                </Card>
+                            </Col>
+                        ))}
+                    </Row>
+                </div>
             </Container>
         </>
 

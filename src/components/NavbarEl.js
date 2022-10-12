@@ -12,6 +12,7 @@ import cart from '../images/cart.png'
 import pp from '../images/cart (2).png'
 import user from '../images/user.png'
 import logout from '../images/logout.png'
+import prods from '../images/prods.png'
 
 
 
@@ -51,25 +52,36 @@ function NavbarEl() {
 
     const navigate = useNavigate();
 
+    const handleNavigateToHome = () => {
+        navigate("/")
+    }
     const handleNavigateToProfile = () => {
+        handleCloseU()
         navigate("/profile");
     };
+    const handleNavigateToCart = () => {
+        navigate("/cart")
+    }
+    const handleNavigateToAddProduct = () => {
+        handleCloseU()
+        navigate("/add-product")
+    }
 
     return (
         <>
-            <Navbar className='bg-yellow navbar'>
+            <Navbar expand='lg' className='bg-yellow navbar h-nav'>
                 <Container>
-                    <Navbar.Brand href="#home" className='navbar-brand'>WaysFood  <img
+                    <Navbar.Brand onClick={handleNavigateToHome} href="#home" className='navbar-brand'>WaysFood  <img
                         alt=""
                         src={logo}
                         width="50"
                         height="50"
                         className="d-inline-block align-top"
                     />{' '}</Navbar.Brand>
-                    <Navbar.Toggle />
-                    <Navbar.Collapse className="justify-content-end">
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
 
-                        {isLoggedIn ? <><span className='btn text-white me-2' onClick={handleShowReg} ><img src={cart} alt="" /></span>
+                        {isLoggedIn ? <><span className='btn text-white me-2' onClick={handleNavigateToCart} ><img src={cart} alt="" /></span>
                             <span className='btn' onClick={handleShowU}><img src={pp} alt="" /></span></> : <><Button className='btn btn-brown text-white me-2' onClick={handleShowReg} >Register</Button>
                             <Button className='btn btn-brown text-white' onClick={handleShowLog}>Login</Button></>}
 
@@ -86,25 +98,8 @@ function NavbarEl() {
                             <Modal.Title className='text-yellow'>Register</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <Form autoComplete='off'>
-                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1" autoComplete='off'>
+                            <Form >
 
-                                    <Form.Control
-                                        type="email"
-                                        placeholder="Email"
-                                        autoComplete='off'
-
-                                    />
-                                </Form.Group>
-                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-
-                                    <Form.Control
-                                        type="password"
-                                        placeholder="Password"
-                                        autoComplete='off'
-
-                                    />
-                                </Form.Group>
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
 
                                     <Form.Control
@@ -113,6 +108,15 @@ function NavbarEl() {
 
                                     />
                                 </Form.Group>
+
+                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                    <Form.Control type="email" placeholder="Email" />
+                                </Form.Group>
+
+                                <Form.Group className="mb-3" controlId="formBasicPassword">
+                                    <Form.Control type="password" placeholder="Password" />
+                                </Form.Group>
+
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
 
                                     <Form.Select aria-label="Default select example">
@@ -217,6 +221,9 @@ function NavbarEl() {
                     >
                         <Modal.Header closeButton>
                             <Modal.Title><img src={user} alt="" className='me-3' /><span onClick={handleNavigateToProfile}>Profile</span></Modal.Title>
+                        </Modal.Header>
+                        <Modal.Header>
+                            <Modal.Title><img src={prods} alt="" className='me-3' /><span onClick={handleNavigateToAddProduct}>Add Product</span></Modal.Title>
                         </Modal.Header>
 
                         <Modal.Body>

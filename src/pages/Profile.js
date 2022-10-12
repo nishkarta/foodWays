@@ -1,8 +1,9 @@
 import React from 'react'
+import ProfileEl from '../components/ProfileEl'
 
 function Profile() {
     return (
-        <div>Profile</div>
+        <ProfileEl />
     )
 }
 

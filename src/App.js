@@ -9,9 +9,11 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from './pages/Home';
 import Cart from './pages/Cart';
 import Profile from './pages/Profile';
+import EditEl from './components/EditEl';
 import Details from './pages/Details';
-import AddProduct from './pages/Details';
+import AddProduct from './pages/AddProduct';
 import Transactions from './pages/Transactions';
+
 
 
 function App() {
@@ -24,8 +26,9 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/details" element={<Details />} />
         <Route exact path="/profile" element={<Profile />} />
+        <Route exact path="/edit-profile" element={<EditEl />} />
         <Route exact path="/cart" element={<Cart />} />
-        <Route exact path="/addproduct" element={<AddProduct />} />
+        <Route exact path="/add-product" element={<AddProduct />} />
         <Route exact path="/transactions" element={<Transactions />} />
       </Routes>
     </Router>

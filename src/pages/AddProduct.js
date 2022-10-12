@@ -1,8 +1,9 @@
 import React from 'react'
+import AddEl from '../components/AddEl'
 
 function AddProduct() {
     return (
-        <div>AddProduct</div>
+        <AddEl />
     )
 }
 
