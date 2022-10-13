@@ -15,12 +15,12 @@ export const restos = [
         distance: "0.6 KM"
     },
     {
-        name: "KFC",
+        name: "Pecel Ayam Prambanan",
         image: prambanan,
         distance: "0.6 KM"
     },
     {
-        name: "J.co",
+        name: "Kopi Kenangan",
         image: kenangan,
         distance: "1.6 KM"
     },

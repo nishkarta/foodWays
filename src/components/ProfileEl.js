@@ -14,9 +14,9 @@ function ProfileEl() {
     return (
         <div className="container-grey h-page">
             <Container className='p-5'>
-                <Row className=''>
+                <Row className='mt-3'>
                     <Col className='col-12 col-lg-7  mb-5'>
-                        <h3 className='mb-3 ff-abhaya fw-bolder fs-1 text-center text-lg-start'>My Profile</h3>
+                        <h3 className='mb-3 ff-abhaya f-36 fw-extra-bold text-center text-lg-start'>My Profile</h3>
                         <div className="row">
 
 
@@ -25,24 +25,24 @@ function ProfileEl() {
                                 <>
                                     <Col key={index} className=" col-5 col-lg-4 ">
                                         <div>
-                                            <Card style={{ width: '11rem' }} className=" container-grey border-0">
+                                            <Card style={{ width: '180px' }} className=" container-grey border-0">
                                                 <Card.Img variant="top" src={user.image} className="rounded mb-3" />
-                                                <Button className='btn-full btn-brown text-white fw-bold p-2' onClick={handleNavigateToEdit}>Edit Profile</Button>
+                                                <Button className='btn-full btn-brown text-white fw-bold f-14 p-2' onClick={handleNavigateToEdit}>Edit Profile</Button>
                                             </Card>
                                         </div>
                                     </Col>
-                                    <Col className=' ff-avenir'>
+                                    <Col className=' ff-avenir f-18'>
                                         <div className='mx-3'>
                                             <div className=''>
-                                                <h4 className='text-lighter-brown'>Full Name</h4>
+                                                <h4 className='text-lighter-brown fw-bold f-18'>Full Name</h4>
                                                 <p>{user.fullName}</p>
                                             </div>
                                             <div>
-                                                <h4 className='text-lighter-brown'>Email</h4>
+                                                <h4 className='text-lighter-brown f-18'>Email</h4>
                                                 <p>{user.emailAddress}</p>
                                             </div>
                                             <div>
-                                                <h4 className='text-lighter-brown'>Phone</h4>
+                                                <h4 className='text-lighter-brown f-18'>Phone</h4>
                                                 <p>{user.phoneNumber}</p>
                                             </div>
                                         </div>
@@ -57,13 +57,13 @@ function ProfileEl() {
                     <Col className='col-12 col-lg-5'>
 
 
-                        <h3 className='mb-3 ff-abhaya fw-bolder fs-1 text-center text-lg-start'>Transaction / Order Histories</h3>
+                        <h3 className='mb-3 ff-abhaya f-36 fw-extra-bold text-center text-lg-start'>Transaction / Order Histories</h3>
 
 
 
 
                         {transactions.map((trans, index) => (
-                            <div className="d-flex bg-white justify-content-between align-items-center px-2 py-3 mb-3">
+                            <div className="d-flex bg-white justify-content-between align-items-center px-2 py-3 mb-4">
                                 <div key={index} className="">
                                     <h6 className='ff-abhaya fw-extra-bold mb-1'>{trans.storeName}</h6>
                                     <p className='ff-avenir mb-2' style={{ fontSize: '10px' }}><span className='fw-bold'>Saturday, </span>{trans.date}</p>
@@ -72,7 +72,7 @@ function ProfileEl() {
                                 </div>
                                 <div key={index} className=' text-end'>
                                     <img src={waysdeliv} alt="" className='mb-1' />
-                                    <button className='border-0 btn-green-trans btn-full' style={{ fontSize: '11px' }}>{trans.status}</button>
+                                    <button className='border-0 btn-green-trans float-right fw-bold f-11' style={{ width: '60%' }}><span>{trans.status}</span></button>
                                 </div>
                             </div>
                         ))}
