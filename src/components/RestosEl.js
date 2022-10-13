@@ -11,7 +11,7 @@ function RestosEl() {
     }
     return (
         <>
-            <Container className='p-5 '>
+            <Container className='p-5'>
                 <h3 className='text-center text-lg-start mb-3 ff-abhaya fw-extra-bold f-36'>Restaurant Near You</h3>
                 <div className="">
 

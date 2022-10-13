@@ -10,7 +10,7 @@ import { partners } from '../dataDummy/partners'
 function PartnersEl() {
     return (
         <>
-            <Container className='p-5 '>
+            <Container className='p-5'>
                 <h3 className='text-center text-lg-start mb-3 ff-abhaya fw-extra-bold f-36'>Popular Restaurants</h3>
                 <div className="">
 

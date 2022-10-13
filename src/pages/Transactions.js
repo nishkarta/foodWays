@@ -1,8 +1,9 @@
 import React from 'react'
+import IncomeEl from '../components/IncomeEl'
 
 function Transactions() {
     return (
-        <div>Transaction</div>
+        <IncomeEl />
     )
 }
 

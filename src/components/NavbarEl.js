@@ -1,5 +1,4 @@
 
-
 import React, { useState } from 'react'
 
 import { useNavigate } from "react-router-dom";
@@ -7,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Container, Navbar, Button, Modal, FloatingLabel, Dropdown } from 'react-bootstrap'
 
 import FormAll from './Atoms/FormAll';
+
 
 import logo from '../images/logo.svg';
 import Form from 'react-bootstrap/Form';
@@ -35,6 +35,7 @@ function NavbarEl() {
 
     const handleLogout = () => {
         setIsLoggedIn(false)
+        handleNavigateToHome()
     }
 
 
@@ -75,7 +76,7 @@ function NavbarEl() {
 
                         {isLoggedIn ? <div>
                             <Dropdown>
-                                <span><img src={cart} alt='' onClick={handleNavigateToCart} /></span>
+                                <span><img src={cart} alt='' onClick={handleNavigateToCart} className='me-3' /></span>
 
                                 <Dropdown.Toggle variant="bg-yellow" id="dropdown-basic">
                                     <img src={pp} alt='' />
@@ -90,7 +91,8 @@ function NavbarEl() {
                                         alt='' className='me-2'
                                     />Add Products</Dropdown.Item>
                                     <Dropdown.Divider />
-                                    <Dropdown.Item href="#/action-3" onclick={handleLogout}><img src={logout} alt='' className='me-2' />Logout</Dropdown.Item>
+                                    <Dropdown.Item onClick={handleLogout}><img src={logout} alt='' className='me-2' />Logout</Dropdown.Item>
+
 
                                 </Dropdown.Menu>
                             </Dropdown>
@@ -113,14 +115,14 @@ function NavbarEl() {
                             <Form >
 
 
-                                <FormAll label="Full Name" type="text" placeholder="Full Name" className="mb-3" />
-                                <FormAll label="Email" type="email" placeholder="Email" className="mb-3" />
-                                <FormAll label="Password" type="password" placeholder="Password" className="mb-3" />
+                                <FormAll label="Full Name" type="text" placeholder="Full Name" className="mb-3 bg-grey2 text-grey2 border-grey2" />
+                                <FormAll label="Email" type="email" placeholder="Email" className="mb-3 bg-grey2 text-grey2 border-grey2" />
+                                <FormAll label="Password" type="password" placeholder="Password" className="mb-3 bg-grey2 text-grey2 border-grey2" />
 
 
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                     <FloatingLabel label='Gender'>
-                                        <Form.Select aria-label="Default select example">
+                                        <Form.Select aria-label="Default select example" className='bg-grey2 text-grey2 border-grey2'>
                                             <option selected disabled hidden>Select Gender</option>
                                             <option value="m">Male</option>
                                             <option value="f">Female</option>
@@ -129,13 +131,13 @@ function NavbarEl() {
                                     </FloatingLabel>
                                 </Form.Group>
 
-                                <FormAll label="Phone" type="tel" placeholder="Phone" className="mb-3" />
+                                <FormAll label="Phone" type="tel" placeholder="Phone" className="mb-3 bg-grey2 text-grey2 border-grey2" />
 
 
 
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                     <FloatingLabel label='Login Type'>
-                                        <Form.Select aria-label="Default select example">
+                                        <Form.Select aria-label="Default select example" className='bg-grey2 text-grey2 border-grey2'>
                                             <option selected disabled hidden>Select Login Type</option>
                                             <option value="u">As User</option>
                                             <option value="a">As Admin</option>
@@ -173,8 +175,8 @@ function NavbarEl() {
                         </Modal.Header>
                         <Modal.Body>
                             <Form>
-                                <FormAll label='Email' type='email' placeholder='Email' className='mb-3' />
-                                <FormAll label='Password' type='password' placeholder='Password' className='mb-3' />
+                                <FormAll label='Email' type='email' placeholder='Email' className='mb-3 bg-grey2 text-grey2 border-grey2' />
+                                <FormAll label='Password' type='password' placeholder='Password' className='mb-3 bg-grey2 text-grey2 border-grey2' />
 
                             </Form>
                         </Modal.Body>

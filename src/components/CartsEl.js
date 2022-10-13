@@ -6,9 +6,9 @@ import bin from '../images/bin.png'
 
 function CartsEl() {
     return (
-        <div className="container-grey h-page">
+        <div className="container-grey">
             <Container className='p-5 ff-avenir'>
-                <h3 className='mb-4 ff-abhaya fw-extra-bold f-36'>Geprek Bensu</h3>
+                <h3 className='mb-4 mt-3 ff-abhaya fw-extra-bold f-36 text-center text-lg-start'>Geprek Bensu</h3>
                 <h5 className='text-lighter-brown mb-3 f-18'>Delivery Location</h5>
                 <Form className='row mb-5'>
                     <Form.Group className="mb-3 col-12 col-lg-9">

@@ -7,7 +7,7 @@ function MenusEl() {
     return (
         <div className="container-grey">
             <Container className='p-5'>
-                <h3 className='mb-1 mt-1 ff-abhaya fw-extra-bold f-36 text-center text-lg-start'>Geprek Bensu, Menus</h3>
+                <h3 className='mb-1 mt-3 ff-abhaya fw-extra-bold f-36 text-center text-lg-start'>Geprek Bensu, Menus</h3>
                 <div className="d-flex">
 
                     <Row className=''>
