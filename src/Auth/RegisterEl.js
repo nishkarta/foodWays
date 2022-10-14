@@ -2,15 +2,17 @@ import React from 'react'
 import { Modal, Form, Button, FloatingLabel } from 'react-bootstrap'
 import FormAll from '../components/Atoms/FormAll'
 
-function RegisterEl({ showReg, setShowReg, setShowLog }) {
-
+function RegisterEl({ showReg, setShowReg, showLog, setShowLog }) {
+// 
     const handleCloseReg = () => setShowReg(false);
+    // const handleShowReg = () => setShowReg(true)
 
-    const handleShowLog = () => {
-        setShowReg(false)
-        setShowLog(true)
-    };
+    // const handleShowLog = () => {
+    //     setShowReg(false)
+    //     setShowLog(true)
+    // };
 
+ 
 
 
     return (
@@ -65,7 +67,10 @@ function RegisterEl({ showReg, setShowReg, setShowLog }) {
                     <div className='btn-full justify-content-center d-flex'>
                         <div className='align-items-center'>
                             <p className=''>Already have an account? Click
-                                <span className='ms-1 fw-bold' variant="" onClick={handleShowLog} style={{cursor:'pointer'}}>
+                                <span className='ms-1 fw-bold' variant="" onClick={() => {
+                                setShowReg(false)
+                                setShowLog(true)
+                                }} style={{cursor:'pointer'}}>
                                     Here
                                 </span></p>
                         </div>
@@ -74,6 +79,7 @@ function RegisterEl({ showReg, setShowReg, setShowLog }) {
                 </Modal.Footer>
 
             </Modal>
+
         </div>
 
     )

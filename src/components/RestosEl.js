@@ -1,11 +1,22 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import { Container, Row, Col, Card } from 'react-bootstrap'
 import { restos } from '../dataDummy/restos'
 import { useNavigate } from "react-router-dom";
 import { LoginContext } from './Contexts/LoginContext';
+import LoginEl from '../Auth/LoginEl';
+import RegisterEl from '../Auth/RegisterEl';
 
 function RestosEl() {
     const { isLoggedIn } = useContext(LoginContext);
+    
+    const [showLog, setShowLog] = useState(false);
+    const [showReg, setShowReg] = useState(false);
+
+
+    const handleShowLog = () => {
+        setShowLog(true)
+    };
+
 
 
     const navigate = useNavigate();
@@ -22,7 +33,7 @@ function RestosEl() {
 
                             <Col key={index} className="col-12 col-md-4 col-lg-3">
 
-                                <Card onClick={isLoggedIn ? () => navigate('/details') : ''} style={{ width: '100%', cursor:'pointer' }} className="my-3 p-2 border-0">
+                                <Card onClick={isLoggedIn ? () => navigate('/details') : handleShowLog} style={{ width: '100%', cursor:'pointer' }} className="my-3 p-2 border-0">
                                     <Card.Img variant="top" src={resto.image} className='mb-3' />
                                     <Card.Body className='p-0'>
                                         <Card.Title className='ff-abhaya fw-extra-bold f-18 text-start'>{resto.name}</Card.Title>
@@ -36,6 +47,9 @@ function RestosEl() {
                     </Row>
                 </div>
             </Container>
+            <LoginEl showLog={showLog} setShowLog={setShowLog} setShowReg={setShowReg}/>
+            <RegisterEl showReg={showReg} setShowReg={setShowReg} setShowLog={setShowLog} />
+
         </>
 
     )

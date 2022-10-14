@@ -6,20 +6,23 @@ import { LoginContext } from '../components/Contexts/LoginContext'
 function LoginEl({ showLog, setShowLog, setShowReg }) {
     const { setIsLoggedIn } = useContext(LoginContext)
 
-    const handleLogin = () => {
-        handleCloseLog()
-        setIsLoggedIn(true)
-    }
-
     const handleCloseLog = () => setShowLog(false);
 
-    const handleShowReg = () => {
-        setShowLog(false)
-        setShowReg(true)
-    };
+    // const handleLogin = () => {
+    //     handleCloseLog()
+    //     setIsLoggedIn(true)
+    // }
+
+
+    // const handleShowReg = () => {
+    //     setShowLog(false)
+    //     setShowReg(true)
+    // };
 
 
     return (
+        <>
+        
         <div className='loginModal'>
             <Modal show={showLog} onHide={handleCloseLog}>
                 <Modal.Header closeButton>
@@ -34,13 +37,19 @@ function LoginEl({ showLog, setShowLog, setShowReg }) {
                 </Modal.Body>
                 <Modal.Footer>
 
-                    <Button className='btn-full btn-brown p-3 fs-5 fw-bolder' variant="primary" onClick={handleLogin}>
+                    <Button className='btn-full btn-brown p-3 fs-5 fw-bolder' variant="primary" onClick={() => {
+                        setIsLoggedIn(true);
+                        setShowLog(false)
+                    }}>
                         Login
                     </Button>
                     <div className='btn-full justify-content-center d-flex'>
                         <div className='align-items-center'>
                             <p className=''>Don't have an account? Click
-                                <span className='ms-1 fw-bold' variant="" onClick={handleShowReg} style={{cursor:'pointer'}}>
+                                <span className='ms-1 fw-bold' variant="" onClick={()=> {
+                                    setShowLog(false);
+                                    setShowReg(true);
+                                }} style={{cursor:'pointer'}}>
                                     Here
                                 </span></p>
                         </div>
@@ -49,7 +58,7 @@ function LoginEl({ showLog, setShowLog, setShowReg }) {
                 </Modal.Footer>
             </Modal>
         </div>
-
+        </>
     )
 }
 

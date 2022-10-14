@@ -114,9 +114,9 @@ function NavbarEl() {
             </Navbar>
             <div>
 
-                <RegisterEl showReg={showReg} setShowReg={setShowReg} />
+                <LoginEl showLog={showLog} setShowLog={setShowLog} setShowReg={setShowReg}/>
+                <RegisterEl showReg={showReg} setShowReg={setShowReg} setShowLog={setShowLog} />
 
-                <LoginEl showLog={showLog} setShowLog={setShowLog} />
 
             </div>
         </>
