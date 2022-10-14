@@ -1,9 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap'
 import { menus } from '../dataDummy/menus'
-
+import { CartContext } from './Contexts/CartContext';
 
 function MenusEl() {
+
+    const {cartCount, setCartCount} = useContext(CartContext) 
+
     return (
         <div className="container-grey">
             <Container className='p-5'>
@@ -23,7 +26,7 @@ function MenusEl() {
                                         <Card.Text className='text-danger f-14 ff-avenir'>
                                             {menu.price}
                                         </Card.Text>
-                                        <Button className='btn-full bg-yellow text-dark f-14 fw-extra-bold ff-avenir'>Order</Button>
+                                        <Button className='btn-full bg-yellow text-dark f-14 fw-extra-bold ff-avenir' onClick={() => setCartCount(cartCount+1)}>Order</Button>
                                     </Card.Body>
                                 </Card>
                             </Col>

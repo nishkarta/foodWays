@@ -14,6 +14,8 @@ import logout from '../images/logout.png'
 import prods from '../images/prods.png'
 
 import { LoginContext } from './Contexts/LoginContext';
+import { CartContext } from './Contexts/CartContext';
+
 import LoginEl from '../Auth/LoginEl';
 import RegisterEl from '../Auth/RegisterEl';
 
@@ -25,6 +27,7 @@ function NavbarEl() {
     const navigate = useNavigate();
 
     const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext);
+    const {cartCount} = useContext(CartContext) 
 
     const [showLog, setShowLog] = useState(false);
     const [showReg, setShowReg] = useState(false);
@@ -78,7 +81,7 @@ function NavbarEl() {
                         {isLoggedIn ? <div>
                             <Dropdown>
                                 <span >
-                                    <img src={cart} alt='' onClick={handleNavigateToCart} className='me-0' style={{}} /> <Badge bg="danger" style={{ position: 'relative', borderRadius: '50%', left: '-16px', top: '-4px' }}>3</Badge>
+                                    <img src={cart} alt='' onClick={handleNavigateToCart} className='me-0' style={{}} /> <Badge bg="danger" style={{ position: 'relative', borderRadius: '50%', width:'20px', height:'20px', left: '-14px', top: '-4px' }}><span style={{position:'relative', right:'1px', top:'-1px'}}>{cartCount}</span></Badge>
 
                                 </span>
 

@@ -4,6 +4,7 @@ import './styles/App.css';
 
 import NavbarEl from './components/NavbarEl';
 import { LoginContext } from './components/Contexts/LoginContext';
+import { CartContext } from './components/Contexts/CartContext';
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useState } from 'react';
@@ -21,10 +22,10 @@ import Transactions from './pages/Transactions';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const [cartCount, setCartCount] = useState(3)
   return (
     <LoginContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
-
+      <CartContext.Provider value = {{cartCount, setCartCount}}>
       <Router>
         <NavbarEl />
         <Routes>
@@ -37,6 +38,7 @@ function App() {
           <Route exact path="/transactions" element={<Transactions />} />
         </Routes>
       </Router>
+      </CartContext.Provider>
     </LoginContext.Provider>
   );
 }
