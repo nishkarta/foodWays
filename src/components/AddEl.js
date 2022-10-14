@@ -2,8 +2,10 @@ import React from 'react'
 import { Container, Form, Row, Col, Button } from 'react-bootstrap'
 import FormAll from './Atoms/FormAll'
 import file from '../images/file.png'
+import { useNavigate } from 'react-router-dom'
 
 function AddEl() {
+    const navigate = useNavigate()
     return (
         <div className="container-grey h-page">
             <Container className='p-5'>
@@ -32,7 +34,7 @@ function AddEl() {
                         <FormAll label="Price" type="text" placeholder="Price" className="mb-5 bg-grey2 border-grey3" />
 
                         <Form.Group className="mb-3 float-end col-3">
-                            <Button type="button" className='btn-brown btn-full px-5 py-2 f-14'>
+                            <Button type="button" className='btn-brown btn-full px-5 py-2 f-14' onClick={() => navigate('/details')}>
                                 Save
                             </Button>
                         </Form.Group>

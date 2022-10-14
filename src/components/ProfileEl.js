@@ -23,16 +23,16 @@ function ProfileEl() {
 
                             {users.map((user, index) => (
                                 <>
-                                    <Col key={index} className=" col-5 col-lg-4 ">
+                                    <Col key={index} className=" col-12 col-sm-5 col-md-4">
                                         <div>
-                                            <Card style={{ width: '180px' }} className=" container-grey border-0">
+                                            <Card style={{ width: '100%' }} className=" container-grey border-0 mb-5">
                                                 <Card.Img variant="top" src={user.image} className="rounded mb-3" />
                                                 <Button className='btn-full btn-brown text-white fw-bold f-14 p-2' onClick={handleNavigateToEdit}>Edit Profile</Button>
                                             </Card>
                                         </div>
                                     </Col>
                                     <Col className=' ff-avenir f-18'>
-                                        <div className='mx-3'>
+                                        <div className='mx-3 text-center text-sm-start'>
                                             <div className=''>
                                                 <h4 className='text-lighter-brown fw-bold f-18'>Full Name</h4>
                                                 <p>{user.fullName}</p>

@@ -3,7 +3,7 @@ import { Container, Row, Col, Form, Button, Modal } from 'react-bootstrap';
 import { carts } from '../dataDummy/carts'
 import map from '../images/map.png'
 import bin from '../images/bin.png'
-import loc from '../images/location.png'
+import loc from '../images/delloc.png'
 import otw from '../images/otw.png'
 
 function CartsEl() {
@@ -155,7 +155,7 @@ function CartsEl() {
             <div>
 
                 <div className="locationModal">
-                    <Modal show={showLoc} onHide={handleCloseLoc} size='xl'
+                    <Modal show={showLoc} onHide={handleCloseLoc} size='xl' centered
  >
         
                         <Modal.Header closeButton>
@@ -167,7 +167,7 @@ function CartsEl() {
                     </Modal>
                 </div>
                 <div className="otwModal">
-                <Modal show={showOtw} onHide={handleCloseOtw} size='xl'
+                <Modal show={showOtw} onHide={handleCloseOtw} size='xl' centered
  >
         
                         <Modal.Header closeButton>
