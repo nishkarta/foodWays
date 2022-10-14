@@ -65,7 +65,7 @@ function RegisterEl({ showReg, setShowReg, setShowLog }) {
                     <div className='btn-full justify-content-center d-flex'>
                         <div className='align-items-center'>
                             <p className=''>Already have an account? Click
-                                <span className='ms-1 fw-bold' variant="" onClick={handleShowLog}>
+                                <span className='ms-1 fw-bold' variant="" onClick={handleShowLog} style={{cursor:'pointer'}}>
                                     Here
                                 </span></p>
                         </div>

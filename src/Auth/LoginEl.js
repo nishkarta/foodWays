@@ -40,7 +40,7 @@ function LoginEl({ showLog, setShowLog, setShowReg }) {
                     <div className='btn-full justify-content-center d-flex'>
                         <div className='align-items-center'>
                             <p className=''>Don't have an account? Click
-                                <span className='ms-1 fw-bold' variant="" onClick={handleShowReg}>
+                                <span className='ms-1 fw-bold' variant="" onClick={handleShowReg} style={{cursor:'pointer'}}>
                                     Here
                                 </span></p>
                         </div>
