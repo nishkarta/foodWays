@@ -1,51 +1,49 @@
 
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 import { useNavigate } from "react-router-dom";
 
-import { Container, Navbar, Button, Modal, FloatingLabel, Dropdown } from 'react-bootstrap'
-
-import FormAll from './Atoms/FormAll';
+import { Badge, Container, Navbar, Button, Dropdown } from 'react-bootstrap'
 
 
 import logo from '../images/logo.svg';
-import Form from 'react-bootstrap/Form';
 import cart from '../images/cart.png'
 import pp from '../images/cart (2).png'
 import user from '../images/user.png'
 import logout from '../images/logout.png'
 import prods from '../images/prods.png'
 
+import { LoginContext } from './Contexts/LoginContext';
+import LoginEl from '../Auth/LoginEl';
+import RegisterEl from '../Auth/RegisterEl';
+
+
 
 
 function NavbarEl() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    const navigate = useNavigate();
+
+    const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext);
+
     const [showLog, setShowLog] = useState(false);
     const [showReg, setShowReg] = useState(false);
 
-    const handleCloseLog = () => setShowLog(false);
     const handleShowLog = () => {
         setShowReg(false)
         setShowLog(true)
     };
-    const handleLogin = () => {
-        handleCloseLog()
-        setIsLoggedIn(true)
-    }
 
     const handleLogout = () => {
         setIsLoggedIn(false)
         handleNavigateToHome()
     }
 
-
-    const handleCloseReg = () => setShowReg(false);
     const handleShowReg = () => {
         setShowLog(false)
         setShowReg(true)
     };
 
-    const navigate = useNavigate();
 
     const handleNavigateToHome = () => {
         navigate("/")
@@ -59,6 +57,9 @@ function NavbarEl() {
     const handleNavigateToAddProduct = () => {
         navigate("/add-product")
     }
+
+
+
 
     return (
         <>
@@ -76,7 +77,10 @@ function NavbarEl() {
 
                         {isLoggedIn ? <div>
                             <Dropdown>
-                                <span><img src={cart} alt='' onClick={handleNavigateToCart} className='me-3' /></span>
+                                <span >
+                                    <img src={cart} alt='' onClick={handleNavigateToCart} className='me-0' style={{}} /> <Badge bg="danger" style={{ position: 'relative', borderRadius: '50%', left: '-16px', top: '-4px' }}>3</Badge>
+
+                                </span>
 
                                 <Dropdown.Toggle variant="bg-yellow" id="dropdown-basic">
                                     <img src={pp} alt='' />
@@ -106,7 +110,7 @@ function NavbarEl() {
                 </Container>
             </Navbar>
             <div>
-                <div>
+                {/* <div className='registerModal'>
                     <Modal show={showReg} onHide={handleCloseReg}>
                         <Modal.Header closeButton>
                             <Modal.Title className='text-yellow fs-1' >Register</Modal.Title>
@@ -138,9 +142,9 @@ function NavbarEl() {
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                     <FloatingLabel label='Login Type'>
                                         <Form.Select aria-label="Default select example" className='bg-grey2 text-grey2 border-grey2'>
-                                            <option selected disabled hidden>Select Login Type</option>
-                                            <option value="u">As User</option>
-                                            <option value="a">As Admin</option>
+                                            <option selected disabled hidden>Select User Type</option>
+                                            <option value="cust">As Customer</option>
+                                            <option value="adm">As Admin</option>
 
                                         </Form.Select>
                                     </FloatingLabel>
@@ -166,9 +170,11 @@ function NavbarEl() {
                         </Modal.Footer>
 
                     </Modal>
-                </div>
+                </div> */}
 
-                <div>
+                <RegisterEl showReg={showReg} setShowReg={setShowReg} />
+
+                {/* <div className='loginModal'>
                     <Modal show={showLog} onHide={handleCloseLog}>
                         <Modal.Header closeButton>
                             <Modal.Title className='text-yellow fs-1' >Login</Modal.Title>
@@ -197,6 +203,8 @@ function NavbarEl() {
                         </Modal.Footer>
                     </Modal>
                 </div>
+ */}
+                <LoginEl showLog={showLog} setShowLog={setShowLog} />
 
             </div>
         </>

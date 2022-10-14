@@ -21,7 +21,7 @@ function RestosEl() {
 
                             <Col key={index} className="col-12 col-md-4 col-lg-3">
 
-                                <Card onClick={handleNavigateToDetails} style={{ width: '100%' }} className="my-3 p-3 border-0">
+                                <Card onClick={handleNavigateToDetails} style={{ width: '100%' }} className="my-3 p-2 border-0">
                                     <Card.Img variant="top" src={resto.image} className='mb-3' />
                                     <Card.Body className='p-0'>
                                         <Card.Title className='ff-abhaya fw-extra-bold f-18 text-start'>{resto.name}</Card.Title>
