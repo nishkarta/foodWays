@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { Container, Form, Row, Col, Button, Modal } from 'react-bootstrap'
 import map from '../images/map.png'
 import file from '../images/file.png'
-import FormAll from './Atoms/FormAll'
+import FormAll from '../Atoms/FormAll'
 import myloc from '../images/myloc.png'
 import {  useNavigate } from 'react-router-dom'
 
@@ -21,7 +21,7 @@ function EditEl() {
         <div className="container-grey h-page">
             <Container className='p-5 '>
                 <div className='mt-3'>
-                    <h3 className='mb-4 ff-abhaya fw-extra-bold f-36 text-center text-lg-start'>Edit Profile</h3>
+                    <h3 className='mb-4 ff-abhaya fw-extra-bold f-36 text-center text-lg-start'>Edit Profile (Partner)</h3>
 
 
                     <Form>

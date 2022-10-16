@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Col, Row, Card, Button } from 'react-bootstrap'
-import { users } from '../dataDummy/users'
-import { transactions } from '../dataDummy/transactions'
+import { users } from '../../dataDummy/users'
+import { transactions } from '../../dataDummy/transactions'
 import waysdeliv from '../images/waysdeliv.png'
 import { useNavigate } from 'react-router-dom'
 
@@ -16,7 +16,7 @@ function ProfileEl() {
             <Container className='p-5'>
                 <Row className='mt-3'>
                     <Col className='col-12 col-lg-7  mb-5'>
-                        <h3 className='mb-3 ff-abhaya f-36 fw-extra-bold text-center text-lg-start'>My Profile</h3>
+                        <h3 className='mb-3 ff-abhaya f-36 fw-extra-bold text-center text-lg-start'>My Profile (Partner)</h3>
                         <div className="row">
 
 

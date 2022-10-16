@@ -8,17 +8,6 @@ function LoginEl({ showLog, setShowLog, setShowReg }) {
 
     const handleCloseLog = () => setShowLog(false);
 
-    // const handleLogin = () => {
-    //     handleCloseLog()
-    //     setIsLoggedIn(true)
-    // }
-
-
-    // const handleShowReg = () => {
-    //     setShowLog(false)
-    //     setShowReg(true)
-    // };
-
 
     return (
         <>
@@ -45,8 +34,7 @@ function LoginEl({ showLog, setShowLog, setShowReg }) {
                     </Button>
                     <div className='btn-full justify-content-center d-flex'>
                         <div className='align-items-center'>
-                            <p className=''>Don't have an account? Click
-                                <span className='ms-1 fw-bold' variant="" onClick={()=> {
+                            <p className=''>Don't have an account? Click<span className='ms-1 fw-bold' variant="" onClick={()=> {
                                     setShowLog(false);
                                     setShowReg(true);
                                 }} style={{cursor:'pointer'}}>
