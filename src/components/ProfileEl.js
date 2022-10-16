@@ -66,7 +66,7 @@ function ProfileEl() {
           </Col>
           <Col className="col-12 col-lg-5">
             <h3 className="mb-3 ff-abhaya f-36 fw-extra-bold text-center text-lg-start">
-              Transaction Histories
+              Transaction / Order Histories
             </h3>
 
             {transactions.map((trans, index) => (
