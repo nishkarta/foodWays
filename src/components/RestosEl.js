@@ -7,7 +7,9 @@ import LoginEl from '../Auth/LoginEl';
 import RegisterEl from '../Auth/RegisterEl';
 
 function RestosEl() {
-    const { isLoggedIn } = useContext(LoginContext);
+    const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext);
+    const [setUserRole] = useState("");
+
     
     const [showLog, setShowLog] = useState(false);
     const [showReg, setShowReg] = useState(false);
@@ -47,7 +49,8 @@ function RestosEl() {
                     </Row>
                 </div>
             </Container>
-            <LoginEl showLog={showLog} setShowLog={setShowLog} setShowReg={setShowReg}/>
+            <LoginEl showLog={showLog} setShowLog={setShowLog} setShowReg={setShowReg} setUserRole={setUserRole} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+
             <RegisterEl showReg={showReg} setShowReg={setShowReg} setShowLog={setShowLog} />
 
         </>

@@ -29,8 +29,8 @@ function IncomeEl() {
                                 <td key={index}>{data.name}</td>
                                 <td key={index}>{data.address}</td>
                                 <td key={index}>{data.products}</td>
-                                <td key={index}>{data.status}</td>
-                                <td key={index}>{data.follup}</td>
+                                <td className={data.className} key={index}>{data.status}</td>
+                                <td className='d-flex justify-content-center' key={index}><img src={data.follup} alt=""/></td>
 
                             </tr>
                         ))}

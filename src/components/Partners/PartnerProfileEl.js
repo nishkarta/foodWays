@@ -2,10 +2,10 @@ import React from 'react'
 import { Container, Col, Row, Card, Button } from 'react-bootstrap'
 import { users } from '../../dataDummy/users'
 import { transactions } from '../../dataDummy/transactions'
-import waysdeliv from '../images/waysdeliv.png'
+import waysdeliv from '../../images/waysdeliv.png'
 import { useNavigate } from 'react-router-dom'
 
-function ProfileEl() {
+function PartnerProfileEl() {
     const navigate = useNavigate();
     const handleNavigateToEdit = () => {
         navigate("/edit-profile")
@@ -57,7 +57,7 @@ function ProfileEl() {
                     <Col className='col-12 col-lg-5'>
 
 
-                        <h3 className='mb-3 ff-abhaya f-36 fw-extra-bold text-center text-lg-start'>Transaction / Order Histories</h3>
+                        <h3 className='mb-3 ff-abhaya f-36 fw-extra-bold text-center text-lg-start'>Order Histories</h3>
 
 
 
@@ -72,7 +72,7 @@ function ProfileEl() {
                                 </div>
                                 <div key={index} className=' text-end'>
                                     <img src={waysdeliv} alt="" className='mb-1' />
-                                    <button className='border-0 btn-green-trans float-right fw-bold f-11' style={{ width: '60%' }}><span>{trans.status}</span></button>
+                                    <button onClick={()=> navigate('/transactions')} className='border-0 btn-green-trans float-right fw-bold f-11' style={{ width: '60%' }}><span>{trans.status}</span></button>
                                 </div>
                             </div>
                         ))}
@@ -87,4 +87,4 @@ function ProfileEl() {
     )
 }
 
-export default ProfileEl
+export default PartnerProfileEl

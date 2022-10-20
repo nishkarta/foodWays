@@ -1,5 +1,5 @@
 
-import React, { useContext, useState } from 'react'
+import React, { useContext,  useState } from 'react'
 
 import { useNavigate } from "react-router-dom";
 
@@ -9,6 +9,7 @@ import { Badge, Container, Navbar, Button, Dropdown } from 'react-bootstrap'
 import logo from '../images/logo.svg';
 import cart from '../images/cart.png'
 import pp from '../images/cart (2).png'
+import pp2 from '../images/part.png'
 import user from '../images/user.png'
 import logout from '../images/logout.png'
 import prods from '../images/prods.png'
@@ -24,6 +25,9 @@ import RegisterEl from '../Auth/RegisterEl';
 
 function NavbarEl() {
 
+    // const registerRef = useRef()
+
+    const [userRole, setUserRole] = useState("");
     const navigate = useNavigate();
 
     const { isLoggedIn, setIsLoggedIn } = useContext(LoginContext);
@@ -54,6 +58,9 @@ function NavbarEl() {
     const handleNavigateToProfile = () => {
         navigate("/profile");
     };
+    const handleNavigateToProfilePartner = () => {
+        navigate("/partner-profile");
+    };
     const handleNavigateToCart = () => {
         navigate("/cart")
     }
@@ -78,7 +85,8 @@ function NavbarEl() {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
 
-                        {isLoggedIn ? <div>
+                        {!isLoggedIn ? (<><Button className='btn btn-brown text-white me-2' onClick={handleShowReg} >Register</Button>
+                            <Button className='btn btn-brown text-white' onClick={handleShowLog}>Login</Button></>): userRole === 'cust' ? (<div>
                             <Dropdown>
                                 <span >
                                     <img src={cart} alt='' onClick={handleNavigateToCart} className='me-0' style={{}} /> <Badge bg="danger" style={{ position: 'relative', borderRadius: '50%', width:'20px', height:'20px', left: '-14px', top: '-4px' }}><span style={{position:'relative', right:'1px', top:'-1px'}}>{cartCount}</span></Badge>
@@ -93,6 +101,22 @@ function NavbarEl() {
                                         Profile
                                     </Dropdown.Item>
                                     <Dropdown.Divider />
+                                    
+                                    <Dropdown.Item onClick={handleLogout}><img src={logout} alt='' className='me-2' />Logout</Dropdown.Item>
+
+
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        </div>) : (                            <Dropdown>
+
+                                <Dropdown.Toggle variant="bg-yellow" id="dropdown-basic">
+                                    <img src={pp2} alt='' />
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    <Dropdown.Item onClick={handleNavigateToProfilePartner}><img src={user} alt='' className='me-2'></img>
+                                        Profile
+                                    </Dropdown.Item>
+                                    <Dropdown.Divider />
                                     <Dropdown.Item onClick={handleNavigateToAddProduct}><img
                                         src={prods}
                                         alt='' className='me-2'
@@ -103,8 +127,7 @@ function NavbarEl() {
 
                                 </Dropdown.Menu>
                             </Dropdown>
-                        </div> : <><Button className='btn btn-brown text-white me-2' onClick={handleShowReg} >Register</Button>
-                            <Button className='btn btn-brown text-white' onClick={handleShowLog}>Login</Button></>}
+)}
 
 
 
@@ -114,8 +137,8 @@ function NavbarEl() {
             </Navbar>
             <div>
 
-                <LoginEl showLog={showLog} setShowLog={setShowLog} setShowReg={setShowReg}/>
-                <RegisterEl showReg={showReg} setShowReg={setShowReg} setShowLog={setShowLog} />
+                <LoginEl showLog={showLog} setShowLog={setShowLog} setShowReg={setShowReg} setUserRole={setUserRole} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+                <RegisterEl showReg={showReg} setShowReg={setShowReg} setShowLog={setShowLog}/>
 
 
             </div>

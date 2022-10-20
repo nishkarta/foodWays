@@ -5,12 +5,12 @@ import kenangan from "../images/kenangan.png"
 
 export const restos = [
     {
-        name: "Burger King",
+        name: "Geprek Bensu",
         image: bensu,
         distance: "0.2 KM"
     },
     {
-        name: "Starbucks",
+        name: "Nasi Goreng Mas Rony",
         image: rony,
         distance: "0.6 KM"
     },
